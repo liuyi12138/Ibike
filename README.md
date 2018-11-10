@@ -1,7 +1,7 @@
 # Ibike
 **华科电动车租借平台的后台**
 
-## How tO use
+## How to use
 * 配置数据库文件　`mongod -f mongo.conf`
 * 启动数据库 `mongo --port=27001`
 * 配置后台 `npm install`
