@@ -1,0 +1,163 @@
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5536 port=27001 dbpath=/media/liuyi/Linux1/Ibike/db/db 64-bit host=liuyi-PC
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] db version v3.2.11
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] git version: 009580ad490190ba33d1c6253ebd8d91808923e4
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] modules: none
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] build environment:
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-11-10T19:42:01.363+0800 I CONTROL  [initandlisten] options: { config: "mongo.conf", net: { port: 27001 }, storage: { dbPath: "/media/liuyi/Linux1/Ibike/db/db" }, systemLog: { destination: "file", path: "/media/liuyi/Linux1/Ibike/db/log/mongodb.log" } }
+2018-11-10T19:42:01.388+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2018-11-10T19:42:08.251+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/media/liuyi/Linux1/Ibike/db/db/diagnostic.data'
+2018-11-10T19:42:08.251+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
+2018-11-10T19:42:08.651+0800 I NETWORK  [initandlisten] waiting for connections on port 27001
+2018-11-10T19:42:20.087+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:44370 #1 (1 connection now open)
+2018-11-10T19:44:05.308+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:44416 #2 (2 connections now open)
+2018-11-10T19:46:34.045+0800 I COMMAND  [conn2] command Ibike.ACCOUNT command: insert { insert: "ACCOUNT", documents: [ { uid: "U201713371", name: "刘羿", tel: "18627746983", class: "电信1705", QQ: "852833062", introduce: "哈哈哈哈", headImg: "www.baidu.com", hasBikeOrNot: 0, _id: ObjectId('5be6c51981e7ff16896fc6b0') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { W: 1 } } } protocol:op_query 297ms
+2018-11-10T19:46:43.757+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:44462 #3 (3 connections now open)
+2018-11-10T19:46:44.298+0800 I COMMAND  [conn3] command Ibike.PASSWORD command: insert { insert: "PASSWORD", documents: [ { uid: "U201713371", password: "991229", _id: ObjectId('5be6c51981e7ff16896fc6b1') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 540ms
+2018-11-10T19:55:25.194+0800 I NETWORK  [conn3] end connection 127.0.0.1:44462 (2 connections now open)
+2018-11-10T19:55:25.194+0800 I NETWORK  [conn2] end connection 127.0.0.1:44416 (2 connections now open)
+2018-11-10T19:56:00.687+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45504 #4 (2 connections now open)
+2018-11-10T19:56:10.105+0800 I NETWORK  [conn4] end connection 127.0.0.1:45504 (1 connection now open)
+2018-11-10T19:56:21.311+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45516 #5 (2 connections now open)
+2018-11-10T19:56:37.470+0800 I COMMAND  [conn1] CMD: drop Ibike.ACCOUNT
+2018-11-10T19:56:42.438+0800 I COMMAND  [conn1] CMD: drop Ibike.PASSWORD
+2018-11-10T19:56:42.562+0800 I COMMAND  [conn1] command Ibike.PASSWORD command: drop { drop: "PASSWORD" } keyUpdates:0 writeConflicts:0 numYields:0 reslen:62 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } } } protocol:op_command 124ms
+2018-11-10T19:59:40.276+0800 I NETWORK  [conn1] end connection 127.0.0.1:44370 (1 connection now open)
+2018-11-10T19:59:41.939+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45550 #6 (2 connections now open)
+2018-11-10T19:59:48.166+0800 I NETWORK  [conn5] end connection 127.0.0.1:45516 (1 connection now open)
+2018-11-10T20:00:51.436+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45564 #7 (2 connections now open)
+2018-11-10T20:00:59.892+0800 I NETWORK  [conn7] end connection 127.0.0.1:45564 (1 connection now open)
+2018-11-10T20:02:07.242+0800 I NETWORK  [conn6] end connection 127.0.0.1:45550 (0 connections now open)
+2018-11-10T20:02:08.305+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45574 #8 (1 connection now open)
+2018-11-10T20:02:30.524+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45590 #9 (2 connections now open)
+2018-11-10T20:03:15.647+0800 I COMMAND  [conn9] command Ibike.ACCOUNT command: insert { insert: "ACCOUNT", documents: [ { uid: "U201713371", name: "刘羿", tel: "18627746983", class: "电信1705", QQ: "852833062", introduce: "哈哈哈哈", headImg: "www.baidu.com", hasBikeOrNot: 0, _id: ObjectId('5be6c90285c8d51ac412233d') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 1190ms
+2018-11-10T20:03:20.266+0800 I NETWORK  [conn9] end connection 127.0.0.1:45590 (1 connection now open)
+2018-11-10T20:03:31.374+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45600 #10 (2 connections now open)
+2018-11-10T20:04:02.103+0800 I COMMAND  [conn8] CMD: drop Ibike.ACCOUNT
+2018-11-10T20:04:03.970+0800 I NETWORK  [conn10] end connection 127.0.0.1:45600 (1 connection now open)
+2018-11-10T20:04:08.622+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45610 #11 (2 connections now open)
+2018-11-10T20:04:12.826+0800 I NETWORK  [conn11] end connection 127.0.0.1:45610 (1 connection now open)
+2018-11-10T20:05:48.033+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45634 #12 (2 connections now open)
+2018-11-10T20:05:57.391+0800 I COMMAND  [conn12] command Ibike.ACCOUNT command: insert { insert: "ACCOUNT", documents: [ { uid: "U201713371", name: "刘羿", tel: "18627746983", class: "电信1705", QQ: "852833062", introduce: "哈哈哈哈", headImg: "www.baidu.com", hasBikeOrNot: 0, _id: ObjectId('5be6c9a4923e641baaa201fb') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 456ms
+2018-11-10T20:06:06.945+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45640 #13 (3 connections now open)
+2018-11-10T20:06:07.121+0800 I COMMAND  [conn13] command Ibike.PASSWORD command: insert { insert: "PASSWORD", documents: [ { uid: "U201713371", password: "%3Frjcdk", _id: ObjectId('5be6c9a4923e641baaa201fc') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 175ms
+2018-11-10T20:06:53.014+0800 I NETWORK  [conn8] end connection 127.0.0.1:45574 (2 connections now open)
+2018-11-10T20:06:55.521+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45816 #14 (3 connections now open)
+2018-11-10T20:07:00.264+0800 I COMMAND  [conn14] CMD: drop Ibike.ACCOUNT
+2018-11-10T20:07:01.648+0800 I NETWORK  [conn13] end connection 127.0.0.1:45640 (2 connections now open)
+2018-11-10T20:07:01.648+0800 I NETWORK  [conn12] end connection 127.0.0.1:45634 (2 connections now open)
+2018-11-10T20:07:41.067+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45844 #15 (2 connections now open)
+2018-11-10T20:07:57.015+0800 I NETWORK  [conn15] end connection 127.0.0.1:45844 (1 connection now open)
+2018-11-10T20:08:18.304+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45846 #16 (2 connections now open)
+2018-11-10T20:08:48.438+0800 I NETWORK  [conn16] end connection 127.0.0.1:45846 (1 connection now open)
+2018-11-10T20:09:10.378+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45854 #17 (2 connections now open)
+2018-11-10T20:09:29.639+0800 I COMMAND  [conn17] command Ibike.ACCOUNT command: insert { insert: "ACCOUNT", documents: [ { uid: "U201713371", name: "刘羿", tel: "18627746983", class: "电信1705", QQ: "852833062", introduce: "哈哈哈哈", headImg: "www.baidu.com", hasBikeOrNot: 0, _id: ObjectId('5be6ca797afb501cf5c2a9ef') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 211ms
+2018-11-10T20:09:31.502+0800 I NETWORK  [conn17] end connection 127.0.0.1:45854 (1 connection now open)
+2018-11-10T20:09:52.985+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45864 #18 (2 connections now open)
+2018-11-10T20:11:31.500+0800 I NETWORK  [conn18] end connection 127.0.0.1:45864 (1 connection now open)
+2018-11-10T20:11:52.828+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:45870 #19 (2 connections now open)
+2018-11-10T20:14:36.008+0800 I NETWORK  [conn14] end connection 127.0.0.1:45816 (1 connection now open)
+2018-11-10T20:14:37.328+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46268 #20 (2 connections now open)
+2018-11-10T20:14:59.206+0800 I COMMAND  [conn20] CMD: drop Ibike.ACCOUNT
+2018-11-10T20:15:14.062+0800 I COMMAND  [conn20] CMD: drop Ibike.PASSWORD
+2018-11-10T20:15:14.554+0800 I COMMAND  [conn20] command Ibike.PASSWORD command: drop { drop: "PASSWORD" } keyUpdates:0 writeConflicts:0 numYields:0 reslen:62 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } } } protocol:op_command 491ms
+2018-11-10T20:15:50.310+0800 I NETWORK  [conn20] end connection 127.0.0.1:46268 (1 connection now open)
+2018-11-10T20:15:51.690+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46316 #21 (2 connections now open)
+2018-11-10T20:15:58.063+0800 I NETWORK  [conn19] end connection 127.0.0.1:45870 (1 connection now open)
+2018-11-10T20:16:09.381+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46322 #22 (2 connections now open)
+2018-11-10T20:16:45.184+0800 I COMMAND  [conn22] command Ibike.ACCOUNT command: insert { insert: "ACCOUNT", documents: [ { uid: "U201713371", name: "刘羿", tel: "18627746983", class: "电信1705", QQ: "852833062", introduce: "哈哈哈哈", headImg: "www.baidu.com", hasBikeOrNot: 0, _id: ObjectId('5be6cc2cb8103f1eef8226f7') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 444ms
+2018-11-10T20:16:54.748+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46342 #23 (3 connections now open)
+2018-11-10T20:16:54.920+0800 I COMMAND  [conn23] command Ibike.PASSWORD command: insert { insert: "PASSWORD", documents: [ { uid: "U201713371", password: "%3Frjcdk", _id: ObjectId('5be6cc2cb8103f1eef8226f8') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 170ms
+2018-11-10T20:29:28.139+0800 I NETWORK  [conn22] end connection 127.0.0.1:46322 (2 connections now open)
+2018-11-10T20:29:28.139+0800 I NETWORK  [conn23] end connection 127.0.0.1:46342 (2 connections now open)
+2018-11-10T20:29:39.458+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46490 #24 (2 connections now open)
+2018-11-10T20:29:41.579+0800 I NETWORK  [conn24] end connection 127.0.0.1:46490 (1 connection now open)
+2018-11-10T20:30:03.443+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46496 #25 (2 connections now open)
+2018-11-10T20:30:05.933+0800 I NETWORK  [conn25] end connection 127.0.0.1:46496 (1 connection now open)
+2018-11-10T20:30:33.898+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46512 #26 (2 connections now open)
+2018-11-10T20:31:13.823+0800 I NETWORK  [conn26] end connection 127.0.0.1:46512 (1 connection now open)
+2018-11-10T20:31:42.666+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46536 #27 (2 connections now open)
+2018-11-10T20:32:02.465+0800 I NETWORK  [conn27] end connection 127.0.0.1:46536 (1 connection now open)
+2018-11-10T20:32:39.499+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46546 #28 (2 connections now open)
+2018-11-10T20:32:55.139+0800 I NETWORK  [conn28] end connection 127.0.0.1:46546 (1 connection now open)
+2018-11-10T20:33:06.366+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46576 #29 (2 connections now open)
+2018-11-10T20:33:15.915+0800 I NETWORK  [conn29] end connection 127.0.0.1:46576 (1 connection now open)
+2018-11-10T20:33:27.134+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46592 #30 (2 connections now open)
+2018-11-10T20:33:29.911+0800 I NETWORK  [conn30] end connection 127.0.0.1:46592 (1 connection now open)
+2018-11-10T20:33:31.359+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46594 #31 (2 connections now open)
+2018-11-10T20:33:37.489+0800 I NETWORK  [conn31] end connection 127.0.0.1:46594 (1 connection now open)
+2018-11-10T20:34:22.182+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46626 #32 (2 connections now open)
+2018-11-10T20:35:22.222+0800 I NETWORK  [conn21] end connection 127.0.0.1:46316 (1 connection now open)
+2018-11-10T20:35:23.733+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46640 #33 (2 connections now open)
+2018-11-10T20:35:33.928+0800 I NETWORK  [conn32] end connection 127.0.0.1:46626 (1 connection now open)
+2018-11-10T20:35:48.508+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46646 #34 (2 connections now open)
+2018-11-10T20:35:58.560+0800 I NETWORK  [conn34] end connection 127.0.0.1:46646 (1 connection now open)
+2018-11-10T20:36:42.388+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46656 #35 (2 connections now open)
+2018-11-10T20:37:04.338+0800 I NETWORK  [conn35] end connection 127.0.0.1:46656 (1 connection now open)
+2018-11-10T20:37:15.695+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46660 #36 (2 connections now open)
+2018-11-10T20:37:48.353+0800 I NETWORK  [conn36] end connection 127.0.0.1:46660 (1 connection now open)
+2018-11-10T20:37:59.575+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46678 #37 (2 connections now open)
+2018-11-10T20:38:00.890+0800 I NETWORK  [conn37] end connection 127.0.0.1:46678 (1 connection now open)
+2018-11-10T20:38:06.484+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46684 #38 (2 connections now open)
+2018-11-10T20:39:11.917+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46830 #39 (3 connections now open)
+2018-11-10T20:40:42.031+0800 I NETWORK  [conn38] end connection 127.0.0.1:46684 (2 connections now open)
+2018-11-10T20:40:42.031+0800 I NETWORK  [conn39] end connection 127.0.0.1:46830 (2 connections now open)
+2018-11-10T20:40:53.445+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46898 #40 (2 connections now open)
+2018-11-10T20:41:05.791+0800 I NETWORK  [conn33] end connection 127.0.0.1:46640 (1 connection now open)
+2018-11-10T20:41:08.310+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46900 #41 (2 connections now open)
+2018-11-10T20:41:12.815+0800 I NETWORK  [conn40] end connection 127.0.0.1:46898 (1 connection now open)
+2018-11-10T20:41:19.996+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46906 #42 (2 connections now open)
+2018-11-10T20:42:03.480+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:46936 #43 (3 connections now open)
+2018-11-10T20:43:35.128+0800 I NETWORK  [conn41] end connection 127.0.0.1:46900 (2 connections now open)
+2018-11-10T20:43:36.944+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47036 #44 (3 connections now open)
+2018-11-10T20:43:40.986+0800 I NETWORK  [conn42] end connection 127.0.0.1:46906 (2 connections now open)
+2018-11-10T20:43:40.986+0800 I NETWORK  [conn43] end connection 127.0.0.1:46936 (2 connections now open)
+2018-11-10T20:43:57.033+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47042 #45 (2 connections now open)
+2018-11-10T20:44:22.927+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47052 #46 (3 connections now open)
+2018-11-10T20:44:42.723+0800 I NETWORK  [conn45] end connection 127.0.0.1:47042 (2 connections now open)
+2018-11-10T20:44:42.723+0800 I NETWORK  [conn46] end connection 127.0.0.1:47052 (2 connections now open)
+2018-11-10T20:44:55.690+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47070 #47 (2 connections now open)
+2018-11-10T20:45:02.240+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47076 #48 (3 connections now open)
+2018-11-10T20:48:38.949+0800 I NETWORK  [conn47] end connection 127.0.0.1:47070 (2 connections now open)
+2018-11-10T20:48:38.949+0800 I NETWORK  [conn48] end connection 127.0.0.1:47076 (2 connections now open)
+2018-11-10T20:48:42.519+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47174 #49 (2 connections now open)
+2018-11-10T20:48:52.987+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47182 #50 (3 connections now open)
+2018-11-10T20:49:00.478+0800 I NETWORK  [conn50] end connection 127.0.0.1:47182 (2 connections now open)
+2018-11-10T20:49:00.478+0800 I NETWORK  [conn49] end connection 127.0.0.1:47174 (2 connections now open)
+2018-11-10T20:49:12.407+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47204 #51 (2 connections now open)
+2018-11-10T20:50:52.304+0800 I NETWORK  [conn51] end connection 127.0.0.1:47204 (1 connection now open)
+2018-11-10T20:50:54.756+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47302 #52 (2 connections now open)
+2018-11-10T20:50:54.770+0800 I NETWORK  [conn52] end connection 127.0.0.1:47302 (1 connection now open)
+2018-11-10T20:51:42.626+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47348 #53 (2 connections now open)
+2018-11-10T20:52:23.185+0800 I NETWORK  [conn53] end connection 127.0.0.1:47348 (1 connection now open)
+2018-11-10T20:52:50.506+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47420 #54 (2 connections now open)
+2018-11-10T20:53:53.344+0800 I NETWORK  [conn54] end connection 127.0.0.1:47420 (1 connection now open)
+2018-11-10T20:54:07.463+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47474 #55 (2 connections now open)
+2018-11-10T20:56:11.581+0800 I NETWORK  [conn55] end connection 127.0.0.1:47474 (1 connection now open)
+2018-11-10T20:56:24.673+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47914 #56 (2 connections now open)
+2018-11-10T20:56:24.681+0800 I NETWORK  [conn56] end connection 127.0.0.1:47914 (1 connection now open)
+2018-11-10T20:57:06.022+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:47930 #57 (2 connections now open)
+2018-11-10T20:58:37.559+0800 I NETWORK  [conn57] end connection 127.0.0.1:47930 (1 connection now open)
+2018-11-10T20:58:44.525+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:48042 #58 (2 connections now open)
+2018-11-10T20:58:57.383+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:48052 #59 (3 connections now open)
+2018-11-10T20:59:30.131+0800 I NETWORK  [conn59] end connection 127.0.0.1:48052 (2 connections now open)
+2018-11-10T20:59:30.131+0800 I NETWORK  [conn58] end connection 127.0.0.1:48042 (2 connections now open)
+2018-11-10T20:59:46.218+0800 I COMMAND  [conn44] CMD: drop Ibike.ACCOUNT
+2018-11-10T20:59:51.634+0800 I COMMAND  [conn44] CMD: drop Ibike.PASSWORD
+2018-11-10T20:59:52.168+0800 I COMMAND  [conn44] command Ibike.PASSWORD command: drop { drop: "PASSWORD" } keyUpdates:0 writeConflicts:0 numYields:0 reslen:62 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } } } protocol:op_command 533ms
+2018-11-10T20:59:53.771+0800 I NETWORK  [conn44] end connection 127.0.0.1:47036 (0 connections now open)
+2018-11-10T20:59:56.377+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt), will terminate after current cmd ends
+2018-11-10T20:59:56.378+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2018-11-10T20:59:56.380+0800 I CONTROL  [signalProcessingThread] now exiting
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27001.sock
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2018-11-10T20:59:56.381+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2018-11-10T20:59:56.381+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2018-11-10T20:59:56.702+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2018-11-10T20:59:56.703+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0

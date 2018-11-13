@@ -22,7 +22,7 @@ app.set('port', port);
 ```json
 {
     "DATABASE_URL": "mongodb://localhost:27001",
-    "DATABASE_NAME": "WWeChat",
+    "DATABASE_NAME": "Ibike",
 }
 ```
 

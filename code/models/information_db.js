@@ -6,7 +6,8 @@ let MongoClient = MongoDB.MongoClient;
 let ObjectID = require('mongodb').ObjectID;
 
 let db;
-MongoClient.connect(ConfigSet.DATABASE_URL, (err, client) => {
+
+MongoClient.connect(ConfigSet.DATABASE_URL,{useNewUrlParser:true}, (err, client) => {
     if (err) {
         throw err;
     } else {
