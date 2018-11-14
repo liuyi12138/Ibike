@@ -134,7 +134,7 @@ router.get('/sell/mySell', urlencodedParser, async function (req, res, next) {
 
 /*
  * @function 条件查找车辆信息
- * @param 
+ * @param condition 查询条件
  * @return sell(json对象) 车辆信息
  */
 router.get('/sell/find', urlencodedParser, async function (req, res, next) {

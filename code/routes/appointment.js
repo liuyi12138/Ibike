@@ -1,7 +1,7 @@
 //
-//  rent.js
+//  appoint.js
 //
-//  Created by LY on 11/12/2018.
+//  Created by LY on 11/14/2018.
 //
 
 let express = require('express');
@@ -22,50 +22,45 @@ router.all('*', function(req, res, next) {
 });
 
 /*
- * @function 添加出租车辆
- * @param json对象 出租信息
+ * @function 添加接送信息
+ * @param json对象 接送信息
  * @return code(string) 1 添加成功, -1 账户不存在 -2 车辆不存在
  */
-router.post('/rent/add', urlencodedParser, async function (req, res, next) {
-    let rent = {
+router.post('/appointment/add', urlencodedParser, async function (req, res, next) {
+    let appointment = {
         ownerUid: req.body.ownerUid,
-        electric: req.body.electric,
-        rentType: req.body.rentType,
-        time: req.body.time,
-        price: parseInt(req.body.price),
         from: req.body.from,
         to: req.body.to,
+        time: req.body.time,
+        price: parseInt(req.body.price),
         content: req.body.content,
     }
-
-    console.log(rent);
+    console.log(appointment);
 
     let accountCollection = await informationDB.getCollection("ACCOUNT");
     let bikeCollection = await informationDB.getCollection("BIKE");
-    let rentCollection = await informationDB.getCollection("RENTLIST");
+    let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
-    accountCollection.findOne({ uid: rent.ownerUid }, function (err, accountData) {
+    accountCollection.findOne({ uid: appointment.ownerUid }, function (err, accountData) {
         if (!accountData) {
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
         else {
-            bikeCollection.findOne({ ownerUid: rent.ownerUid }, function (err, bikeData) {
+            bikeCollection.findOne({ ownerUid: appointment.ownerUid }, function (err, bikeData) {
                 if (!bikeData) {
                     res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
                 }
                 else {
-                    rentCollection.insertOne({
-                        ownerUid: rent.ownerUid,
+                    aptCollection.insertOne({
+                        ownerUid: appointment.ownerUid,
                         bike: bikeData,
-                        electric: rent.electric,
-                        rentType: rent.rentType,
-                        time: rent.time,
-                        price: rent.price,
-                        from: rent.from,
-                        to: rent.to,
-                        content: rent.content,
+                        from: appointment.from,
+                        to: appointment.to,
+                        price: appointment.price,
+                        time: appointment.time,
+                        content: appointment.content,
                         timeOutOrNot: 0,
-                        rentedOrNot: 0,
+                        successOrNot: 0,
         
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "添加成功"})
@@ -78,54 +73,50 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
 
 
 /*
- * @function 修改出租信息
- * @param json对象 出租信息
+ * @function 修改接送信息
+ * @param json对象 接送信息
  * @return code(string) 1 修改成功, -1 账户不存在 ，-2 账单不存在 
  */
-router.post('/rent/change', urlencodedParser, async function (req, res, next) {
-    let rent = {
+router.post('/appointment/change', urlencodedParser, async function (req, res, next) {
+    let appointment = {
         ownerUid: req.body.ownerUid,
-        electric: req.body.electric,
-        rentType: req.body.rentType,
-        time: req.body.time,
-        price: parseInt(req.body.price),
         from: req.body.from,
         to: req.body.to,
+        time: req.body.time,
+        price: parseInt(req.body.price),
         content: req.body.content,
         timeOutOrNot: parseInt(req.body.timeOutOrNot),
-        rentedOrNot: parseInt(req.body.rentedOrNot),
+        successOrNot: parseInt(req.body.successOrNot),
         id: req.body.id,
     }
 
-    console.log(rent);
+    console.log(appointment);
 
     let accountCollection = await informationDB.getCollection("ACCOUNT");
-    let rentCollection = await informationDB.getCollection("RENTLIST");
+    let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
-    accountCollection.findOne({ uid: rent.ownerUid }, function (err, data) {
+    accountCollection.findOne({ uid: appointment.ownerUid }, function (err, data) {
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
         else {
 
-            rentCollection.findOne({ _id: ObjectID(rent.id) }, function (err, rentData) {
-                if (!rentData) {
+            aptCollection.findOne({ _id: ObjectID(appointment.id) }, function (err, aptData) {
+                if (!aptData) {
                     res.status(200).json({ "code": "-2" ,"msg" : "账单不存在"})
                 }
                 else {
-                    rentCollection.save({
-                        _id: ObjectID(rentData._id),
-                        ownerUid: rent.ownerUid,
-                        bike: rentData.bike,
-                        electric: rent.electric,
-                        rentType: rent.rentType,
-                        time: rent.time,
-                        price: rent.price,
-                        from: rent.from,
-                        to: rent.to,
-                        content: rent.content,
-                        timeOutOrNot: rent.timeOutOrNot,
-                        rentedOrNot: rent.rentedOrNot,
+                    aptCollection.save({
+                        _id: ObjectID(aptData._id),
+                        ownerUid: appointment.ownerUid,
+                        bike: aptData.bike,
+                        from: appointment.from,
+                        to: appointment.to,
+                        price: appointment.price,
+                        time: appointment.time,
+                        content: appointment.content,
+                        timeOutOrNot: appointment.timeOutOrNot,
+                        successOrNot: appointment.successOrNot,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
                     })
@@ -137,43 +128,43 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
 });
 
 /*
- * @function 条件查找出租车辆信息
+ * @function 条件查找接送信息
  * @param  condition 查询条件
- * @return rent(json对象) 车辆信息
+ * @return relay(json对象) 接送信息
  */
-router.get('/rent/find', urlencodedParser, async function (req, res, next) {
+router.get('/appointment/find', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
     console.log(params);
                                                                                                                                          
     let condition = JSON.parse(params.condition);
     console.log(condition);
-    let collection = await informationDB.getCollection("RENTLIST");
+    let collection = await informationDB.getCollection("APPOINTMENT");
     collection.find(condition).toArray(function (err, allData) {
         res.status(200).json({
-            rent: allData
+            appointment: allData
         });
     })
 
 });
 
 /*
- * @function 根据出租id查看出售信息
- * @param id(string) 出售id
- * @return rent(json对象) 出售信息
+ * @function 根据出租id查看接送信息
+ * @param id(string) 接送信息id
+ * @return relay(json对象) 接送信息
  */
-router.get('/rent/findById', urlencodedParser, async function (req, res, next) {
+router.get('/appointment/findById', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
     console.log(params);
                                                                                                                                          
-    let rentCollection = await informationDB.getCollection("RENTLIST");
+    let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
-    rentCollection.findOne({ _id: ObjectID(params.id) }, function (err, data) {
+    aptCollection.findOne({ _id: ObjectID(params.id) }, function (err, data) {
         if (!data) {
-            res.status(200).json({ "code": "-1" ,"msg" : "出租不存在"})
+            res.status(200).json({ "code": "-1" ,"msg" : "接送不存在"})
         }
         else {
             res.status(200).json({
-                rent: data
+                relay: data
             })
         }
     })
