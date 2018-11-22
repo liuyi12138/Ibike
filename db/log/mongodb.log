@@ -1,37 +1,25 @@
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] MongoDB starting : pid=3873 port=27001 dbpath=/media/liuyi/Linux1/Ibike/db/db 64-bit host=liuyi-PC
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] db version v3.2.11
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] git version: 009580ad490190ba33d1c6253ebd8d91808923e4
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] allocator: tcmalloc
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] modules: none
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten] build environment:
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten]     distarch: x86_64
-2018-11-14T17:38:41.283+0800 I CONTROL  [initandlisten]     target_arch: x86_64
-2018-11-14T17:38:41.284+0800 I CONTROL  [initandlisten] options: { config: "mongo.conf", net: { port: 27001 }, storage: { dbPath: "/media/liuyi/Linux1/Ibike/db/db" }, systemLog: { destination: "file", path: "/media/liuyi/Linux1/Ibike/db/log/mongodb.log" } }
-2018-11-14T17:38:41.308+0800 I -        [initandlisten] Detected data files in /media/liuyi/Linux1/Ibike/db/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
-2018-11-14T17:38:41.308+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=4G,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
-2018-11-14T17:38:48.422+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/media/liuyi/Linux1/Ibike/db/db/diagnostic.data'
-2018-11-14T17:38:48.422+0800 I NETWORK  [HostnameCanonicalizationWorker] Starting hostname canonicalization worker
-2018-11-14T17:38:48.456+0800 I NETWORK  [initandlisten] waiting for connections on port 27001
-2018-11-14T17:39:15.706+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52560 #1 (1 connection now open)
-2018-11-14T17:39:25.406+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52564 #2 (2 connections now open)
-2018-11-14T17:40:42.194+0800 I NETWORK  [conn2] end connection 127.0.0.1:52564 (1 connection now open)
-2018-11-14T17:41:24.142+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52648 #3 (2 connections now open)
-2018-11-14T17:41:32.734+0800 I COMMAND  [conn3] command Ibike.APPOINTMENT command: insert { insert: "APPOINTMENT", documents: [ { ownerUid: "U33333333", bike: { _id: ObjectId('5be831eb90b9630adc75ca43'), ownerUid: "U33333333", bikeImg: "123.jpg", bikeType: "2", bikeOld: "2q2222" }, from: "韵苑", to: "清苑", price: 2000, time: "现在", content: "hhhh", timeOutOrNot: 0, successOrNot: 0, _id: ObjectId('5bebedccd451421008444feb') } ], ordered: true } ninserted:1 keyUpdates:0 writeConflicts:0 numYields:0 reslen:40 locks:{ Global: { acquireCount: { r: 2, w: 2 } }, Database: { acquireCount: { w: 1, W: 1 } }, Collection: { acquireCount: { w: 1, W: 1 } } } protocol:op_query 634ms
-2018-11-14T17:42:11.315+0800 I NETWORK  [conn3] end connection 127.0.0.1:52648 (1 connection now open)
-2018-11-14T17:42:30.189+0800 I NETWORK  [initandlisten] connection accepted from 127.0.0.1:52702 #4 (2 connections now open)
-2018-11-14T17:42:59.713+0800 I COMMAND  [conn4] command Ibike.RELAYLIST command: find { find: "RELAYLIST", filter: { _id: ObjectId('5bebedccd451421008444feb') }, limit: 1, singleBatch: true, batchSize: 1, returnKey: false, showRecordId: false } planSummary: IDHACK keysExamined:0 docsExamined:0 idhack:1 cursorExhausted:1 keyUpdates:0 writeConflicts:0 numYields:0 nreturned:0 reslen:121 locks:{ Global: { acquireCount: { r: 2 } }, Database: { acquireCount: { r: 1 } }, Collection: { acquireCount: { r: 1 } } } protocol:op_query 108ms
-2018-11-14T17:43:54.643+0800 I NETWORK  [conn1] end connection 127.0.0.1:52560 (1 connection now open)
-2018-11-14T17:43:55.582+0800 I NETWORK  [conn4] end connection 127.0.0.1:52702 (0 connections now open)
-2018-11-14T17:43:56.475+0800 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt), will terminate after current cmd ends
-2018-11-14T17:43:56.475+0800 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
-2018-11-14T17:43:56.478+0800 I CONTROL  [signalProcessingThread] now exiting
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] closing listening socket: 6
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] closing listening socket: 7
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27001.sock
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
-2018-11-14T17:43:56.478+0800 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
-2018-11-14T17:43:56.478+0800 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
-2018-11-14T17:43:56.900+0800 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
-2018-11-14T17:43:56.900+0800 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
+2018-11-22T14:21:23.503+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5504 port=27001 dbpath=/media/liuyi/Linux/Ibike/db/db 64-bit host=liuyi-PC
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] db version v3.4.14
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] git version: fd954412dfc10e4d1e3e2dd4fac040f8b476b268
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.1.0h  27 Mar 2018
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] modules: none
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] build environment:
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] options: { config: "mongo.conf", net: { port: 27001 }, storage: { dbPath: "/media/liuyi/Linux/Ibike/db/db" }, systemLog: { destination: "file", path: "/media/liuyi/Linux/Ibike/db/log/mongodb.log" } }
+2018-11-22T14:21:23.523+0800 I -        [initandlisten] Detected data files in /media/liuyi/Linux/Ibike/db/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2018-11-22T14:21:23.523+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3419M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),verbose=(recovery_progress),
+2018-11-22T14:21:27.989+0800 I STORAGE  [initandlisten] WiredTiger message [1542867687:989427][5504:0x7f30d5179dc0], txn-recover: Main recovery loop: starting at 4/11904
+2018-11-22T14:21:27.989+0800 I STORAGE  [initandlisten] WiredTiger message [1542867687:989925][5504:0x7f30d5179dc0], txn-recover: Recovering log 4 through 5
+2018-11-22T14:21:28.648+0800 I STORAGE  [initandlisten] WiredTiger message [1542867688:648244][5504:0x7f30d5179dc0], txn-recover: Recovering log 5 through 5
+2018-11-22T14:21:29.263+0800 I CONTROL  [initandlisten] 
+2018-11-22T14:21:29.287+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-11-22T14:21:29.289+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-11-22T14:21:29.289+0800 I CONTROL  [initandlisten] 
+2018-11-22T14:21:29.313+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/media/liuyi/Linux/Ibike/db/db/diagnostic.data'
+2018-11-22T14:21:29.314+0800 I NETWORK  [thread1] waiting for connections on port 27001
+2018-11-22T14:21:36.239+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:48464 #1 (1 connection now open)
+2018-11-22T14:21:36.240+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:48464 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.14" }, os: { type: "Linux", name: "Deepin", architecture: "x86_64", version: ""15.8"" } }
+2018-11-22T14:22:00.407+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:48466 #2 (2 connections now open)
+2018-11-22T14:22:00.413+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:48466 conn2: { driver: { name: "nodejs", version: "3.1.9" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-deepin13-amd64" }, platform: "Node.js v8.11.2, LE, mongodb-core: 3.1.8" }
