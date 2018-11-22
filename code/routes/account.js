@@ -40,6 +40,7 @@ router.post('/account', urlencodedParser, async function (req, res, next) {
         introduce: req.body.introduce,
         headImg: req.body.headImg,
         password: req.body.password,
+        sex: req.body.sex,
     };
     
     let accountCollection = await informationDB.getCollection("ACCOUNT");
@@ -59,6 +60,7 @@ router.post('/account', urlencodedParser, async function (req, res, next) {
                 QQ: UserData.QQ,
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
+                sex: UserData.sex,
                 hasBikeOrNot: 0,
             })
 
@@ -114,6 +116,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
         QQ: req.body.QQ,
         introduce: req.body.introduce,
         headImg: req.body.headImg,
+        sex: req.body.sex,
         hasBikeOrNot: parseInt(req.body.hasBikeOrNot),
     };
     
@@ -134,6 +137,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
                 QQ: UserData,
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
+                sex: UserData.sex,
                 hasBikeOrNot: UserData.hasBikeOrNot,
             }, function () {
                 res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
