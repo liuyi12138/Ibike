@@ -24,11 +24,11 @@ router.all('*', function(req, res, next) {
 /*
  * @function 添加接送信息
  * @param json对象 接送信息
- * @return code(string) 1 添加成功, -1 账户不存在 -2 车辆不存在
+ * @return code(string) 1 添加成功, -1 账户不存在
  */
 router.post('/appointment/add', urlencodedParser, async function (req, res, next) {
     let appointment = {
-        ownerUid: req.body.ownerUid,
+        uid: req.body.uid,
         from: req.body.from,
         to: req.body.to,
         time: req.body.time,
@@ -38,34 +38,25 @@ router.post('/appointment/add', urlencodedParser, async function (req, res, next
     console.log(appointment);
 
     let accountCollection = await informationDB.getCollection("ACCOUNT");
-    let bikeCollection = await informationDB.getCollection("BIKE");
     let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
-    accountCollection.findOne({ uid: appointment.ownerUid }, function (err, accountData) {
+    accountCollection.findOne({ uid: appointment.uid }, function (err, accountData) {
         if (!accountData) {
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
         else {
-            bikeCollection.findOne({ ownerUid: appointment.ownerUid }, function (err, bikeData) {
-                if (!bikeData) {
-                    res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
-                }
-                else {
-                    aptCollection.insertOne({
-                        ownerUid: appointment.ownerUid,
-                        bike: bikeData,
-                        from: appointment.from,
-                        to: appointment.to,
-                        price: appointment.price,
-                        time: appointment.time,
-                        content: appointment.content,
-                        timeOutOrNot: 0,
-                        successOrNot: 0,
-        
-                    }, function () {
-                        res.status(200).json({ "code": "1" ,"msg" : "添加成功"})
-                    })
-                }
+            aptCollection.insertOne({
+                uid: appointment.uid,
+                from: appointment.from,
+                to: appointment.to,
+                price: appointment.price,
+                time: appointment.time,
+                content: appointment.content,
+                timeOutOrNot: 0,
+                successOrNot: 0,
+
+            }, function () {
+                res.status(200).json({ "code": "1" ,"msg" : "添加成功"})
             })
         }
     })
@@ -79,7 +70,7 @@ router.post('/appointment/add', urlencodedParser, async function (req, res, next
  */
 router.post('/appointment/change', urlencodedParser, async function (req, res, next) {
     let appointment = {
-        ownerUid: req.body.ownerUid,
+        uid: req.body.uid,
         from: req.body.from,
         to: req.body.to,
         time: req.body.time,
@@ -95,7 +86,7 @@ router.post('/appointment/change', urlencodedParser, async function (req, res, n
     let accountCollection = await informationDB.getCollection("ACCOUNT");
     let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
-    accountCollection.findOne({ uid: appointment.ownerUid }, function (err, data) {
+    accountCollection.findOne({ uid: appointment.uid }, function (err, data) {
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
@@ -108,7 +99,7 @@ router.post('/appointment/change', urlencodedParser, async function (req, res, n
                 else {
                     aptCollection.save({
                         _id: ObjectID(aptData._id),
-                        ownerUid: appointment.ownerUid,
+                        uid: appointment.uid,
                         bike: aptData.bike,
                         from: appointment.from,
                         to: appointment.to,
