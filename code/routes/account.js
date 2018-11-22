@@ -261,7 +261,9 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
         else {
             passwordCollection.findOne({ uid: loginData.uid }, function (err, passwordData) {
                 if (uncompileStr(passwordData.password) == loginData.password) {
-                    res.status(200).json({ "code": "1" ,"msg" : "登录成功"})
+                    collection.findOne({ loginData: params.uid }, function (err, data) {
+                        res.status(200).json({ "code": "1" ,"msg" : "登录成功", "account": data})
+                    })
                 }
                 else {
                     res.status(200).json({ "code": "-1" ,"msg" : "账户或密码错误"})
