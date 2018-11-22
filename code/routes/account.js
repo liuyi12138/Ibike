@@ -32,16 +32,16 @@ router.all('*', function(req, res, next) {
 router.post('/account', urlencodedParser, async function (req, res, next) {
     // 获取req.body传来的信息，暂存在UserData中
 	let UserData = {
-		uid: req.body.studentID,
-		name: req.body.name,
-		tel: req.body.tel,
-		class: req.body.class,
-        QQ: req.body.qqID,
-        wechat: req.body.weChatID,
-        introduce: req.body.introduce,
-        headImg: req.body.headImg,
-        password: req.body.password,
-        sex: req.body.gender,
+		uid: req.body.userRegisterInfo.studentID,
+		name: req.body.userRegisterInfo.name,
+		tel: req.body.userRegisterInfo.tel,
+		class: req.body.userRegisterInfo.class,
+        QQ: req.body.userRegisterInfo.qqID,
+        wechat: req.body.userRegisterInfo.weChatID,
+        introduce: req.body.userRegisterInfo.introduce,
+        headImg: req.body.userRegisterInfo.headImg,
+        password: req.body.userRegisterInfo.password,
+        sex: req.body.userRegisterInfo.gender,
     };
     
     let accountCollection = await informationDB.getCollection("ACCOUNT");
