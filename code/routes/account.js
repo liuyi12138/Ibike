@@ -23,7 +23,6 @@ router.all('*', function(req, res, next) {
 });
 
 
-
 /*
  * @function 注册账户
  * @param json对象 账户信息
