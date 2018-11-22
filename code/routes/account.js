@@ -274,21 +274,23 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
 
 //加密算法
 function compileStr(code){
-    var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
-    for(var i=1;i<code.length;i++){        
-        c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
-    }     
-    return escape(c);
+    return code;
+    // var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
+    // for(var i=1;i<code.length;i++){        
+    //     c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
+    // }     
+    // return escape(c);
 }
 
 //解密算法 
 function uncompileStr(code){
-    code = unescape(code);        
-    var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
-    for(var i=1;i<code.length;i++){        
-        c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
-    }        
-    return c;
+    return code;
+    // code = unescape(code);        
+    // var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
+    // for(var i=1;i<code.length;i++){        
+    //     c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
+    // }        
+    // return c;
 }  
 
 module.exports = router;
