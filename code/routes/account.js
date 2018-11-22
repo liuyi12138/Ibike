@@ -32,15 +32,16 @@ router.all('*', function(req, res, next) {
 router.post('/account', urlencodedParser, async function (req, res, next) {
     // 获取req.body传来的信息，暂存在UserData中
 	let UserData = {
-		uid: req.body.uid,
+		uid: req.body.studentID,
 		name: req.body.name,
 		tel: req.body.tel,
 		class: req.body.class,
-        QQ: req.body.QQ,
+        QQ: req.body.qqID,
+        wechat: req.body.weChatID,
         introduce: req.body.introduce,
         headImg: req.body.headImg,
         password: req.body.password,
-        sex: req.body.sex,
+        sex: req.body.gender,
     };
     
     let accountCollection = await informationDB.getCollection("ACCOUNT");
@@ -58,6 +59,7 @@ router.post('/account', urlencodedParser, async function (req, res, next) {
                 tel: UserData.tel,
                 class: UserData.class,
                 QQ: UserData.QQ,
+                wechat: UserData.wechat,
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
                 sex: UserData.sex,
@@ -109,14 +111,16 @@ router.get('/account', urlencodedParser, async function (req, res, next) {
 router.post('/account/change', urlencodedParser, async function (req, res, next) {
     // 获取req.body传来的信息，暂存在UsearData中
 	let UserData = {
-		uid: req.body.uid,
+		uid: req.body.studentID,
 		name: req.body.name,
 		tel: req.body.tel,
 		class: req.body.class,
-        QQ: req.body.QQ,
+        QQ: req.body.qqID,
+        wechat: req.body.weChatID,
         introduce: req.body.introduce,
         headImg: req.body.headImg,
-        sex: req.body.sex,
+        password: req.body.password,
+        sex: req.body.gender,
         hasBikeOrNot: parseInt(req.body.hasBikeOrNot),
     };
     
@@ -135,6 +139,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
                 tel: UserData.tel,
                 class: UserData.class,
                 QQ: UserData,
+                wechat: UserData.wechat,
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
                 sex: UserData.sex,
