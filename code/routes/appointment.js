@@ -139,6 +139,27 @@ router.get('/appointment/find', urlencodedParser, async function (req, res, next
 });
 
 /*
+ * @function 我的接送信息
+ * @param  uid(string) 我的uid
+ * @return relay(json对象) 接送信息
+ */
+router.get('/schedule/find', urlencodedParser, async function (req, res, next) {
+    let params = req.query;
+    console.log(params);
+    let aptCollection = await informationDB.getCollection("APPOINTMENT");
+    let relayCollection = await informationDB.getCollection("RELAYLIST");
+
+    aptCollection.find({uid: params.uid}).toArray(function (err, aptData) {
+        relayCollection.find({ownerUid: params.uid}).toArray(function (err, relayData) {
+            res.status(200).json({
+                appointment: aptData,
+                relay: relayData,
+            });
+        })
+    })
+});
+
+/*
  * @function 根据出租id查看接送信息
  * @param id(string) 接送信息id
  * @return relay(json对象) 接送信息
@@ -152,7 +173,7 @@ router.get('/appointment/findById', urlencodedParser, async function (req, res, 
     aptCollection.findOne({ _id: ObjectID(params.id) }, function (err, data) {
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "接送不存在"})
-        }
+        }条件查找出租车辆信息
         else {
             res.status(200).json({
                 relay: data

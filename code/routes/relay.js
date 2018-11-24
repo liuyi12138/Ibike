@@ -134,7 +134,7 @@ router.get('/relay/find', urlencodedParser, async function (req, res, next) {
 });
 
 /*
- * @function 根据出租id查看现场接送信息
+ * @function 根据现场接送信息id查看现场接送信息
  * @param id(string) 现场接送信息id
  * @return relay(json对象) 现场接送信息
  */
@@ -158,6 +158,21 @@ router.get('/relay/findById', urlencodedParser, async function (req, res, next) 
 });
 
 
+function findRegion(myRegion) {
+    let yun = [];
+    let qin = [];
+    let zi = [];
 
+    if (PointInPoly(myRegion,yun)) return "韵苑";
+    else if (PointInPoly(myRegion,qin)) return "沁苑";
+    else if (PointInPoly(myRegion,zi)) return "紫崧";
+}
 
+function PointInPoly(pt, poly) { 
+    for (var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
+        ((poly[i].longitude <= pt.longitude && pt.longitude < poly[j].longitude) || (poly[j].longitude <= pt.longitude && pt.longitude < poly[i].longitude))
+        && (pt.latitude < (poly[j].latitude - poly[i].latitude) * (pt.longitude - poly[i].longitude) / (poly[j].longitude - poly[i].longitude) + poly[i].latitude)
+        && (c = !c); 
+    return c; 
+}
 module.exports = router;
