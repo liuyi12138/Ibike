@@ -216,7 +216,7 @@ router.post('/account/findPassword', urlencodedParser, async function (req, res,
         else {
             if (newData.name == data.name) {
                 passwordCollection.findOne({ uid: newData.uid }, function (err, passwordData) {
-                    let password = compileStr(UserData.password);
+                    let password = compileStr(newData.password);
 
                     passwordCollection.save({
                         _id: ObjectID(passwordData._id),
