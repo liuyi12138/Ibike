@@ -55,6 +55,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
                 bikePrice: sell.bikePrice,
                 content: sell.content,
                 battery: sell.battery,
+                createTime: getDate(),
                 status: 1,
 
             }, function () {
@@ -108,6 +109,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
                         bikePrice: sell.bikePrice,
                         content: sell.content,
                         battery: sell.battery,
+                        createTime: sellData.createTime,
                         status: sell.status,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})

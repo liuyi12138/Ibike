@@ -54,6 +54,7 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
                         bike: bikeData,
                         from: relay.from,
                         to: relay.to,
+                        createTime: getDate(),
                         status: 1,
         
                     }, function () {
@@ -102,6 +103,7 @@ router.post('/relay/change', urlencodedParser, async function (req, res, next) {
                         bike: relayData.bike,
                         from: relay.from,
                         to: relay.to,
+                        createTime: relayData.createTime,
                         status: relay.status,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})

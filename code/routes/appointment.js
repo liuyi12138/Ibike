@@ -52,6 +52,7 @@ router.post('/appointment/add', urlencodedParser, async function (req, res, next
                 price: appointment.price,
                 time: appointment.time,
                 content: appointment.content,
+                createTime: getDate(),
                 timeOutOrNot: 0,
                 successOrNot: 0,
 
@@ -106,6 +107,7 @@ router.post('/appointment/change', urlencodedParser, async function (req, res, n
                         price: appointment.price,
                         time: appointment.time,
                         content: appointment.content,
+                        createTime: aptData.createTime,
                         timeOutOrNot: appointment.timeOutOrNot,
                         successOrNot: appointment.successOrNot,
                     }, function () {

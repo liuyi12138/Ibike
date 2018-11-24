@@ -60,6 +60,7 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
                         timeInfo: rent.timeInfo,
                         price: rent.price,
                         region: rent.region,
+                        createTime: getDate(),
                         timeOutOrNot: 0,
                         rentedOrNot: 0,
         
@@ -116,6 +117,7 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
                         timeInfo: rent.timeInfo,
                         price: rent.price,
                         region: rent.region,
+                        createTime: rentData.createTime,
                         timeOutOrNot: rent.timeOutOrNot,
                         rentedOrNot: rent.rentedOrNot,
                     }, function () {
