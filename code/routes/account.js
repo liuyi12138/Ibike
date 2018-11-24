@@ -171,7 +171,7 @@ router.post('/account/changePassword', urlencodedParser, async function (req, re
         else {
             passwordCollection.findOne({ uid: newData.uid }, function (err, passwordData) {
                 if (newData.oldPassWord == uncompileStr(passwordData.password)) {
-                    let password = compileStr(passwordData.password);
+                    let password = compileStr(newData.password);
 
                     passwordCollection.save({
                         _id: ObjectID(passwordData._id),
