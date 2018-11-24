@@ -129,7 +129,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
         }
         else {
             accountCollection.save({
-                _id: ObjectID(UserData._id),
+                _id: ObjectID(data._id),
                 uid: UserData.uid,
                 name: UserData.name,
                 tel: UserData.tel,
@@ -273,22 +273,22 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
 //加密算法
 function compileStr(code){
     return code;
-    // var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
-    // for(var i=1;i<code.length;i++){        
-    //     c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
-    // }     
-    // return escape(c);
+    var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
+    for(var i=1;i<code.length;i++){        
+        c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
+    }     
+    return escape(c);
 }
 
 //解密算法 
 function uncompileStr(code){
     return code;
-    // code = unescape(code);        
-    // var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
-    // for(var i=1;i<code.length;i++){        
-    //     c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
-    // }        
-    // return c;
+    code = unescape(code);        
+    var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
+    for(var i=1;i<code.length;i++){        
+        c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
+    }        
+    return c;
 }  
 
 module.exports = router;
