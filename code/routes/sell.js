@@ -33,6 +33,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
         bikeType: req.body.bikeType,
         bikeOld: req.body.bikeOld,
         bikePrice: parseInt(req.body.bikePrice),
+        battery: req.body.battery,
         content: req.body.content,
     }
 
@@ -53,6 +54,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
                 bikeOld: sell.bikeOld,
                 bikePrice: sell.bikePrice,
                 content: sell.content,
+                battery: sell.battery,
                 status: 1,
 
             }, function () {
@@ -76,6 +78,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
         bikeOld: req.body.bikeOld,
         bikePrice: parseInt(req.body.bikePrice),
         content: req.body.content,
+        battery: req.body.battery,
         status: parseInt(req.body.status),
         id: req.body.id,
     }
@@ -104,6 +107,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
                         bikeOld: sell.bikeOld,
                         bikePrice: sell.bikePrice,
                         content: sell.content,
+                        battery: sell.battery,
                         status: sell.status,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
