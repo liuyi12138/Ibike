@@ -150,7 +150,7 @@ router.post('/bike/remove', urlencodedParser, async function (req, res, next) {
             res.status(200).json({"code":"-1", "msg": "车辆不存在" })
         } else {
             collection.remove({ownerUid: Id},function () {
-                accountCollection.update({uid: bike.ownerUid},{$set: {hasBikeOrNot: 0}});
+                accountCollection.update({uid: Id},{$set: {hasBikeOrNot: 0}});
                 res.status(200).json({ "code":"1" , "msg": "删除成功" });
                 });
         }
