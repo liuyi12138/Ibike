@@ -118,9 +118,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
         wechat: req.body.weChatID,
         introduce: req.body.introduce,
         headImg: req.body.headImg,
-        password: req.body.password,
         sex: req.body.gender,
-        hasBikeOrNot: parseInt(req.body.hasBikeOrNot),
     };
     
     let accountCollection = await informationDB.getCollection("ACCOUNT");
@@ -129,7 +127,6 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "没有此账户"})
         }
-
         else {
             accountCollection.save({
                 _id: ObjectID(UserData._id),
@@ -142,7 +139,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
                 sex: UserData.sex,
-                hasBikeOrNot: UserData.hasBikeOrNot,
+                hasBikeOrNot: data.hasBikeOrNot,
             }, function () {
                 res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
             })
