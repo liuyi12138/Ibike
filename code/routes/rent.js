@@ -110,7 +110,7 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
                     rentCollection.save({
                         _id: ObjectID(rentData._id),
                         ownerUid: rent.ownerUid,
-                        bike: rentData.bikeData,
+                        bike: rentData.bike,
                         battery: rent.battery,
                         type: rent.type,
                         timeInfo: rent.timeInfo,
