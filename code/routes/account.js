@@ -171,7 +171,7 @@ router.post('/account/changePassword', urlencodedParser, async function (req, re
         else {
             passwordCollection.findOne({ uid: newData.uid }, function (err, passwordData) {
                 if (newData.oldPassWord == uncompileStr(passwordData.password)) {
-                    let password = compileStr(UserData.password);
+                    let password = compileStr(passwordData.password);
 
                     passwordCollection.save({
                         _id: ObjectID(passwordData._id),
@@ -273,22 +273,22 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
 //加密算法
 function compileStr(code){
     return code;
-    var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
-    for(var i=1;i<code.length;i++){        
-        c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
-    }     
-    return escape(c);
+    // var c=String.fromCharCode(code.charCodeAt(0)+code.length);  
+    // for(var i=1;i<code.length;i++){        
+    //     c+=String.fromCharCode(code.charCodeAt(i)+code.charCodeAt(i-1));  
+    // }     
+    // return escape(c);
 }
 
 //解密算法 
 function uncompileStr(code){
     return code;
-    code = unescape(code);        
-    var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
-    for(var i=1;i<code.length;i++){        
-        c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
-    }        
-    return c;
+    // code = unescape(code);        
+    // var c=String.fromCharCode(code.charCodeAt(0)-code.length);        
+    // for(var i=1;i<code.length;i++){        
+    //     c+=String.fromCharCode(code.charCodeAt(i)-c.charCodeAt(i-1));        
+    // }        
+    // return c;
 }  
 
 module.exports = router;
