@@ -29,13 +29,11 @@ router.all('*', function(req, res, next) {
 router.post('/rent/add', urlencodedParser, async function (req, res, next) {
     let rent = {
         ownerUid: req.body.ownerUid,
-        electric: req.body.electric,
-        rentType: req.body.rentType,
-        time: req.body.time,
+        battery: req.body.battery,
+        type: req.body.type,
+        timeInfo: req.body.timeInfo,
         price: parseInt(req.body.price),
-        from: req.body.from,
-        to: req.body.to,
-        content: req.body.content,
+        region: req.body.region
     }
 
     console.log(rent);
@@ -57,13 +55,11 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
                     rentCollection.insertOne({
                         ownerUid: rent.ownerUid,
                         bike: bikeData,
-                        electric: rent.electric,
-                        rentType: rent.rentType,
-                        time: rent.time,
+                        battery: rent.battery,
+                        type: rent.type,
+                        timeInfo: rent.timeInfo,
                         price: rent.price,
-                        from: rent.from,
-                        to: rent.to,
-                        content: rent.content,
+                        region: rent.region,
                         timeOutOrNot: 0,
                         rentedOrNot: 0,
         
@@ -85,13 +81,11 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
 router.post('/rent/change', urlencodedParser, async function (req, res, next) {
     let rent = {
         ownerUid: req.body.ownerUid,
-        electric: req.body.electric,
-        rentType: req.body.rentType,
-        time: req.body.time,
+        battery: req.body.battery,
+        type: req.body.type,
+        timeInfo: req.body.timeInfo,
         price: parseInt(req.body.price),
-        from: req.body.from,
-        to: req.body.to,
-        content: req.body.content,
+        region: req.body.region,
         timeOutOrNot: parseInt(req.body.timeOutOrNot),
         rentedOrNot: parseInt(req.body.rentedOrNot),
         id: req.body.id,
@@ -116,14 +110,12 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
                     rentCollection.save({
                         _id: ObjectID(rentData._id),
                         ownerUid: rent.ownerUid,
-                        bike: rentData.bike,
-                        electric: rent.electric,
-                        rentType: rent.rentType,
-                        time: rent.time,
+                        bike: rentData.bikeData,
+                        battery: rent.battery,
+                        type: rent.type,
+                        timeInfo: rent.timeInfo,
                         price: rent.price,
-                        from: rent.from,
-                        to: rent.to,
-                        content: rent.content,
+                        region: rent.region,
                         timeOutOrNot: rent.timeOutOrNot,
                         rentedOrNot: rent.rentedOrNot,
                     }, function () {
