@@ -134,7 +134,7 @@ router.post('/account/change', urlencodedParser, async function (req, res, next)
                 name: UserData.name,
                 tel: UserData.tel,
                 class: UserData.class,
-                QQ: UserData,
+                QQ: UserData.QQ,
                 wechat: UserData.wechat,
                 introduce: UserData.introduce,
                 headImg: UserData.headImg,
