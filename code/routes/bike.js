@@ -92,7 +92,6 @@ router.get('/bike', urlencodedParser, async function (req, res, next) {
  */
 router.post('/bike/change', urlencodedParser, async function (req, res, next) {
     let bike = {
-        id: req.body.id,
 		ownerUid: req.body.ownerUid,
         bikeImg: req.body.bikeImg,
         bikeType: req.body.bikeType,
@@ -111,7 +110,7 @@ router.post('/bike/change', urlencodedParser, async function (req, res, next) {
         }
 
         else {
-            bikeCollection.findOne({ _id: ObjectID(bike.id) }, function (err, bikeData) {
+            bikeCollection.findOne({ ownerUid: bike.ownerUid }, function (err, bikeData) {
                 if (!bikeData) {
                     res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
                 }
