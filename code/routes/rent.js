@@ -149,6 +149,23 @@ router.get('/rent/find', urlencodedParser, async function (req, res, next) {
 });
 
 /*
+ * @function 根据用户uid获取车辆出售信息
+ * @param id(string) 用户id
+ * @return bike(json对象) 车辆信息
+ */
+router.get('/rent/myRent', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+	console.log(params);
+    let collection = await informationDB.getCollection("RENTLIST");
+    collection.find({ownerUid: params.uid}).toArray(function (err, data) {
+        res.status(200).json({
+            sell: data
+        });
+    })
+});
+
+
+/*
  * @function 根据出租id查看出售信息
  * @param id(string) 出售id
  * @return rent(json对象) 出售信息

@@ -129,7 +129,7 @@ router.get('/sell/mySell', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
 	console.log(params);
     let collection = await informationDB.getCollection("SELLLIST");
-    collection.find({ownerUid: params.ownerUid}).toArray(function (err, data) {
+    collection.find({ownerUid: params.uid}).toArray(function (err, data) {
         res.status(200).json({
             sell: data
         });
