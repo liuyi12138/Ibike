@@ -159,6 +159,8 @@ router.post('/account/changePassword', urlencodedParser, async function (req, re
         oldPassWord: req.body.oldPassWord,
         newPassword: req.body.newPassword,
     };
+
+    console.log(newData)
     
     let accountCollection = await informationDB.getCollection("ACCOUNT");
     let passwordCollection = await informationDB.getCollection("PASSWORD");
@@ -170,8 +172,7 @@ router.post('/account/changePassword', urlencodedParser, async function (req, re
 
         else {
             passwordCollection.findOne({ uid: newData.uid }, function (err, passwordData) {
-                if(1) {
-                // if (newData.oldPassWord == uncompileStr(passwordData.password)) {
+                if (newData.oldPassWord == uncompileStr(passwordData.password)) {
                     let password = compileStr(newData.newPassword);
 
                     passwordCollection.save({
