@@ -138,12 +138,12 @@ router.post('/bike/change', urlencodedParser, async function (req, res, next) {
  * @return code(string) 1 删除成功, -1 车辆不存在
  */
 router.delete('/bike/remove', urlencodedParser, async function (req, res, next) {
-    let Id  =  req.body.id;
+    let Id  =  req.body.ownerUid;
 
     console.log(req.body);
 
     let collection = await informationDB.getCollection("BIKE");
-    collection.findOne({ _id: ObjectID(Id) }, function (err, data) {
+    collection.findOne({ ownerUid: Id}, function (err, data) {
         if (!data) {
             res.status(200).json({"code":"-1", "msg": "车辆不存在" })
         } else {
