@@ -137,10 +137,10 @@ router.post('/bike/change', urlencodedParser, async function (req, res, next) {
  * @param id(string) 车辆id
  * @return code(string) 1 删除成功, -1 车辆不存在
  */
-router.delete('/bike/remove', urlencodedParser, async function (req, res, next) {
-    let Id  =  req.data.ownerUid;
+router.post('/bike/remove', urlencodedParser, async function (req, res, next) {
+    let Id  =  req.body.ownerUid;
 
-    console.log(req.data);
+    console.log(req.body);
 
     let collection = await informationDB.getCollection("BIKE");
     collection.findOne({ ownerUid: Id}, function (err, data) {
