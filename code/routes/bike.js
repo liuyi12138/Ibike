@@ -147,7 +147,7 @@ router.delete('/bike/remove', urlencodedParser, async function (req, res, next) 
         if (!data) {
             res.status(200).json({"code":"-1", "msg": "车辆不存在" })
         } else {
-            collection.remove({_id: ObjectID(Id)},function () {
+            collection.remove({ownerUid: Id},function () {
                 res.status(200).json({ "code":"1" , "msg": "删除成功" });
                 });
         }
