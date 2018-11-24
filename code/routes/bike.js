@@ -45,9 +45,9 @@ router.post('/bike/add', urlencodedParser, async function (req, res, next) {
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
-        else if(data.hasBikeOrNot == 1) {
-            res.status(200).json({ "code": "-2" ,"msg" : "车辆已添加"})
-        }
+        // else if(data.hasBikeOrNot == 1) {
+        //     res.status(200).json({ "code": "-2" ,"msg" : "车辆已添加"})
+        // }
         else {
             bikeCollection.insertOne({
                 ownerUid: bike.ownerUid,
