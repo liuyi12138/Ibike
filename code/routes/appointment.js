@@ -173,7 +173,7 @@ router.get('/appointment/findById', urlencodedParser, async function (req, res, 
     aptCollection.findOne({ _id: ObjectID(params.id) }, function (err, data) {
         if (!data) {
             res.status(200).json({ "code": "-1" ,"msg" : "接送不存在"})
-        }条件查找出租车辆信息
+        }
         else {
             res.status(200).json({
                 relay: data
