@@ -64,7 +64,7 @@ router.post('/bike/add', urlencodedParser, async function (req, res, next) {
 });
 
 /*
- * @function 根据车辆_id获取车辆信息
+ * @function 根据ownerUid获取车辆信息
  * @param id(string) 车辆id
  * @return bike(json对象) 车辆信息
  */
@@ -72,7 +72,7 @@ router.get('/bike', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
 	console.log(params);
 	let collection = await informationDB.getCollection("BIKE");
-	collection.findOne({ _id: ObjectID(params.id) }, function (err, data) {
+	collection.findOne({ ownerUid: params.ownerUid }, function (err, data) {
 		if (data) {
 			res.status(200).json({
                 bike: data
