@@ -30,8 +30,7 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
     let relay = {
         ownerUid: req.body.ownerUid,
         from: req.body.from,
-        to: req.body.to,
-        price: parseInt(req.body.price),
+        to: req.body.to
     }
 
     console.log(relay);
@@ -55,7 +54,6 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
                         bike: bikeData,
                         from: relay.from,
                         to: relay.to,
-                        price: relay.price,
                         status: 1,
         
                     }, function () {
@@ -78,7 +76,6 @@ router.post('/relay/change', urlencodedParser, async function (req, res, next) {
         ownerUid: req.body.ownerUid,
         from: req.body.from,
         to: req.body.to,
-        price: parseInt(req.body.price),
         status: parseInt(req.body.status),
         id: req.body.id,
     }
@@ -105,7 +102,6 @@ router.post('/relay/change', urlencodedParser, async function (req, res, next) {
                         bike: relayData.bike,
                         from: relay.from,
                         to: relay.to,
-                        price: relay.price,
                         status: relay.status,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
