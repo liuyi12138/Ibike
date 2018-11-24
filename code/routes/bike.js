@@ -143,11 +143,14 @@ router.post('/bike/remove', urlencodedParser, async function (req, res, next) {
     console.log(req.body);
 
     let collection = await informationDB.getCollection("BIKE");
+    let accountCollection = await informationDB.getCollection("ACCOUNT");
+    
     collection.findOne({ ownerUid: Id}, function (err, data) {
         if (!data) {
             res.status(200).json({"code":"-1", "msg": "车辆不存在" })
         } else {
             collection.remove({ownerUid: Id},function () {
+                accountCollection.update({uid: bike.ownerUid},{$set: {hasBikeOrNot: 0}});
                 res.status(200).json({ "code":"1" , "msg": "删除成功" });
                 });
         }
