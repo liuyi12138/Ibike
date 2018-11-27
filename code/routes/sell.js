@@ -48,6 +48,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
         }
         else {
             sellCollection.insertOne({
+                user: data,
                 ownerUid: sell.ownerUid,
                 bikeImg: sell.bikeImg,
                 bikeType: sell.bikeType,
@@ -102,6 +103,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
                 else {
                     sellCollection.save({
                         _id: ObjectID(sellData._id),
+                        user: sellData.user,
                         ownerUid: sell.ownerUid,
                         bikeImg: sell.bikeImg,
                         bikeType: sell.bikeType,
