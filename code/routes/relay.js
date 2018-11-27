@@ -49,6 +49,11 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
                     res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
                 }
                 else {
+                    let fromRegion = findRegion(appointment.from);
+                    let toRegion = findRegion(appointment.to);
+                    appointment.from.region = fromRegion;
+                    appointment.to.region = toRegion;
+
                     relayCollection.insertOne({
                         ownerUid: relay.ownerUid,
                         bike: bikeData,
@@ -97,6 +102,11 @@ router.post('/relay/change', urlencodedParser, async function (req, res, next) {
                     res.status(200).json({ "code": "-2" ,"msg" : "账单不存在"})
                 }
                 else {
+                    let fromRegion = findRegion(appointment.from);
+                    let toRegion = findRegion(appointment.to);
+                    appointment.from.region = fromRegion;
+                    appointment.to.region = toRegion;
+                    
                     relayCollection.save({
                         _id: ObjectID(relayData._id),
                         ownerUid: relay.ownerUid,
@@ -158,7 +168,6 @@ router.get('/relay/findById', urlencodedParser, async function (req, res, next) 
     })
 
 });
-
 
 function findRegion(myRegion) {
     let yun = [{latitude:30.5051511231,longitude:114.4374990463},{latitude:30.5181655062,longitude:114.4390869141},{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5064082702,longitude:114.4235515594}];
