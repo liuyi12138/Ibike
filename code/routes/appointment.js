@@ -45,6 +45,11 @@ router.post('/appointment/add', urlencodedParser, async function (req, res, next
             res.status(200).json({ "code": "-1" ,"msg" : "账户不存在"})
         }
         else {
+            let fromRegion = findRegion(appointment.from);
+            let toRegion = findRegion(appointment.to);
+            appointment.from.region = fromRegion;
+            appointment.to.region = toRegion;
+
             aptCollection.insertOne({
                 uid: appointment.uid,
                 from: appointment.from,
@@ -98,6 +103,11 @@ router.post('/appointment/change', urlencodedParser, async function (req, res, n
                     res.status(200).json({ "code": "-2" ,"msg" : "账单不存在"})
                 }
                 else {
+                    let fromRegion = findRegion(appointment.from);
+                    let toRegion = findRegion(appointment.to);
+                    appointment.from.region = fromRegion;
+                    appointment.to.region = toRegion;
+                    
                     aptCollection.save({
                         _id: ObjectID(aptData._id),
                         uid: appointment.uid,
@@ -184,6 +194,25 @@ router.get('/appointment/findById', urlencodedParser, async function (req, res, 
     })
 
 });
+
+function findRegion(myRegion) {
+    let yun = [{latitude:30.5051511231,longitude:114.4374990463},{latitude:30.5181655062,longitude:114.4390869141},{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5064082702,longitude:114.4235515594}];
+    let qin = [{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5192006664,longitude:114.4115138054},{latitude:30.5075544784,longitude:114.4102048874},{latitude:30.5064082702,longitude:114.4235515594}];
+    let zi = [{latitude:30.5192006664,longitude:114.4115138054},{latitude:30.5205315705,longitude:114.4019222260},{latitude:30.5065191942,longitude:114.3993902206},{latitude:30.5075544784,longitude:114.4102048874}];
+
+    if (PointInPoly(myRegion,yun)) return "韵苑";
+    else if (PointInPoly(myRegion,qin)) return "沁苑";
+    else if (PointInPoly(myRegion,zi)) return "紫崧";
+    else return "其他"
+}
+
+function PointInPoly(pt, poly) { 
+    for (var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
+        ((poly[i].longitude <= pt.longitude && pt.longitude < poly[j].longitude) || (poly[j].longitude <= pt.longitude && pt.longitude < poly[i].longitude))
+        && (pt.latitude < (poly[j].latitude - poly[i].latitude) * (pt.longitude - poly[i].longitude) / (poly[j].longitude - poly[i].longitude) + poly[i].latitude)
+        && (c = !c); 
+    return c; 
+}
 
 function getDate(){
 	nowDate = new Date();
