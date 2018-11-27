@@ -12,6 +12,7 @@ var sell = require('./routes/sell');
 var rent = require('./routes/rent');
 var relay = require('./routes/relay');
 var appointment  =require('./routes/appointment');
+var qiniu  =require('./routes/qiniu');
 
 
 var app = express();
@@ -36,6 +37,7 @@ app.use('/',sell);
 app.use('/',rent);
 app.use('/',relay);
 app.use('/',appointment);
+app.use('/',qiniu);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

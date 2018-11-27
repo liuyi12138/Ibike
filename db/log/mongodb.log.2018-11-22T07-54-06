@@ -1,0 +1,2 @@
+2018-11-22T15:53:57.299+0800 I STORAGE  [initandlisten] exception in initAndListen: 28574 Cannot start server. Detected data files in /root/Ibike/db/db created by storage engine 'wiredTiger'. The configured storage engine is 'mmapv1'., terminating
+2018-11-22T15:53:57.299+0800 I CONTROL  [initandlisten] dbexit:  rc: 100

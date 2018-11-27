@@ -1,0 +1,25 @@
+2018-11-22T14:21:23.503+0800 I CONTROL  [initandlisten] MongoDB starting : pid=5504 port=27001 dbpath=/media/liuyi/Linux/Ibike/db/db 64-bit host=liuyi-PC
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] db version v3.4.14
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] git version: fd954412dfc10e4d1e3e2dd4fac040f8b476b268
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.1.0h  27 Mar 2018
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] modules: none
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] build environment:
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-11-22T14:21:23.504+0800 I CONTROL  [initandlisten] options: { config: "mongo.conf", net: { port: 27001 }, storage: { dbPath: "/media/liuyi/Linux/Ibike/db/db" }, systemLog: { destination: "file", path: "/media/liuyi/Linux/Ibike/db/log/mongodb.log" } }
+2018-11-22T14:21:23.523+0800 I -        [initandlisten] Detected data files in /media/liuyi/Linux/Ibike/db/db created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2018-11-22T14:21:23.523+0800 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3419M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),verbose=(recovery_progress),
+2018-11-22T14:21:27.989+0800 I STORAGE  [initandlisten] WiredTiger message [1542867687:989427][5504:0x7f30d5179dc0], txn-recover: Main recovery loop: starting at 4/11904
+2018-11-22T14:21:27.989+0800 I STORAGE  [initandlisten] WiredTiger message [1542867687:989925][5504:0x7f30d5179dc0], txn-recover: Recovering log 4 through 5
+2018-11-22T14:21:28.648+0800 I STORAGE  [initandlisten] WiredTiger message [1542867688:648244][5504:0x7f30d5179dc0], txn-recover: Recovering log 5 through 5
+2018-11-22T14:21:29.263+0800 I CONTROL  [initandlisten] 
+2018-11-22T14:21:29.287+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-11-22T14:21:29.289+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-11-22T14:21:29.289+0800 I CONTROL  [initandlisten] 
+2018-11-22T14:21:29.313+0800 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/media/liuyi/Linux/Ibike/db/db/diagnostic.data'
+2018-11-22T14:21:29.314+0800 I NETWORK  [thread1] waiting for connections on port 27001
+2018-11-22T14:21:36.239+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:48464 #1 (1 connection now open)
+2018-11-22T14:21:36.240+0800 I NETWORK  [conn1] received client metadata from 127.0.0.1:48464 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.14" }, os: { type: "Linux", name: "Deepin", architecture: "x86_64", version: ""15.8"" } }
+2018-11-22T14:22:00.407+0800 I NETWORK  [thread1] connection accepted from 127.0.0.1:48466 #2 (2 connections now open)
+2018-11-22T14:22:00.413+0800 I NETWORK  [conn2] received client metadata from 127.0.0.1:48466 conn2: { driver: { name: "nodejs", version: "3.1.9" }, os: { type: "Linux", name: "linux", architecture: "x64", version: "4.9.0-deepin13-amd64" }, platform: "Node.js v8.11.2, LE, mongodb-core: 3.1.8" }
