@@ -35,6 +35,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
         bikePrice: parseInt(req.body.bikePrice),
         battery: req.body.battery,
         content: req.body.content,
+        region: req.body.region,
     }
 
     console.log(sell);
@@ -56,6 +57,7 @@ router.post('/sell/add', urlencodedParser, async function (req, res, next) {
                 bikePrice: sell.bikePrice,
                 content: sell.content,
                 battery: sell.battery,
+                region: sell.region,
                 createTime: getDate(),
                 status: 1,
 
@@ -83,6 +85,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
         battery: req.body.battery,
         status: parseInt(req.body.status),
         id: req.body.id,
+        region: req.body.region,
     }
 
     console.log(sell);
@@ -113,6 +116,7 @@ router.post('/sell/change', urlencodedParser, async function (req, res, next) {
                         battery: sell.battery,
                         createTime: sellData.createTime,
                         status: sell.status,
+                        region: sell.region,
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
                     })
