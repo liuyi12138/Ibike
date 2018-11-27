@@ -112,7 +112,15 @@ router.post('/bike/change', urlencodedParser, async function (req, res, next) {
         else {
             bikeCollection.findOne({ ownerUid: bike.ownerUid }, function (err, bikeData) {
                 if (!bikeData) {
-                    res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
+                    bikeCollection.insertOne({
+                        ownerUid: bike.ownerUid,
+                        bikeImg: bike.bikeImg,
+                        bikeType: bike.bikeType,
+                        bikeOld: bike.bikeOld,
+                    }, function () {
+                        accountCollection.update({uid: bike.ownerUid},{$set: {hasBikeOrNot: 1}});
+                        res.status(200).json({ "code": "1" ,"msg" : "添加成功"})
+                    })
                 }
                 else {
                     bikeCollection.save({
