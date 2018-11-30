@@ -139,7 +139,7 @@ router.get('/sell/mySell', urlencodedParser, async function (req, res, next) {
     let collection = await informationDB.getCollection("SELLLIST");
     collection.find({ownerUid: params.uid}).toArray(function (err, data) {
         res.status(200).json({
-            sell: data
+            f: data
         });
     })
 });
@@ -249,6 +249,39 @@ router.get('/sell/findById', urlencodedParser, async function (req, res, next) {
             })
         }
     })
+
+});
+
+
+/*
+ * @function 确认售出
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/sell/confirm', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("SELLLIST");
+    collection.update({ _id: ObjectID(params.id)},{$set: {status: 0}});
+    res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
+
+});
+
+
+/*
+ * @function 删除出租信息
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/sell/remove', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("SELLLIST");
+    collection.remove({_id: ObjectID(params.id)},function () {
+            res.status(200).json({ "code":"1" , "msg": "删除成功" });
+        });
 
 });
 

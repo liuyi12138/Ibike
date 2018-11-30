@@ -195,6 +195,22 @@ router.get('/appointment/findById', urlencodedParser, async function (req, res, 
 
 });
 
+/*
+ * @function 确认行程
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/sell/confirm', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("APPOINTMENT");
+    collection.update({ _id: ObjectID(params.id)},{$set: {successOrNot: 0}});
+    res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
+
+});
+
+
 function findRegion(myRegion) {
     let yun = [{latitude:30.5051511231,longitude:114.4374990463},{latitude:30.5181655062,longitude:114.4390869141},{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5064082702,longitude:114.4235515594}];
     let qin = [{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5192006664,longitude:114.4115138054},{latitude:30.5075544784,longitude:114.4102048874},{latitude:30.5064082702,longitude:114.4235515594}];

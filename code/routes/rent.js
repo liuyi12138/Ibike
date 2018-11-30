@@ -130,6 +130,39 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
     })
 });
 
+
+/*
+ * @function 确认租出
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/rent/confirm', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("RENTLIST");
+    collection.update({ _id: ObjectID(params.id)},{$set: {rentedOrNot: 0}});
+    res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
+
+});
+
+
+/*
+ * @function 删除出租信息
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/rent/remove', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("RENTLIST");
+    collection.remove({_id: ObjectID(params.id)},function () {
+            res.status(200).json({ "code":"1" , "msg": "删除成功" });
+        });
+
+});
+
 /*
  * @function 条件查找出租车辆信息
  * @param  condition 查询条件
@@ -161,7 +194,7 @@ router.get('/rent/myRent', urlencodedParser, async function (req, res, next) {
     let collection = await informationDB.getCollection("RENTLIST");
     collection.find({ownerUid: params.uid}).toArray(function (err, data) {
         res.status(200).json({
-            sell: data
+            rent: data
         });
     })
 });

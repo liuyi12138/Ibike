@@ -71,6 +71,21 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
     })
 });
 
+/*
+ * @function 确认行程
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/sell/confirm', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("RELAYLIST");
+    collection.update({ _id: ObjectID(params.id)},{$set: {status: 0}});
+    res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
+
+});
+
 
 /*
  * @function 修改现场接送信息
