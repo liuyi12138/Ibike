@@ -117,10 +117,10 @@ router.post('/relay/change', urlencodedParser, async function (req, res, next) {
                     res.status(200).json({ "code": "-2" ,"msg" : "账单不存在"})
                 }
                 else {
-                    let fromRegion = findRegion(appointment.from);
-                    let toRegion = findRegion(appointment.to);
-                    appointment.from.region = fromRegion;
-                    appointment.to.region = toRegion;
+                    let fromRegion = findRegion(relay.from);
+                    let toRegion = findRegion(relay.to);
+                    relay.from.region = fromRegion;
+                    relay.to.region = toRegion;
                     
                     relayCollection.save({
                         _id: ObjectID(relayData._id),
