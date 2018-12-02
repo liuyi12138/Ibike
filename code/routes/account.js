@@ -264,7 +264,7 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
                     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
                         let now = getDate();
                         let nowtime = (10*parseInt(now.hour) + parseInt(now.minutes))/10;
-                        let nowdate = parseInt(now.year+now.month+now.day)
+                        let nowdate = parseInt(100*now.year + 10*now.month + now.day)
                         console.log(nowtime);
                         console.log(nowdate);
                         aptCollection.update({time :{$lt:nowtime}},{$set: {timeOutOrNot: 1}});
