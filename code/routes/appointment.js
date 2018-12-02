@@ -31,7 +31,7 @@ router.post('/appointment/add', urlencodedParser, async function (req, res, next
         uid: req.body.uid,
         from: req.body.from,
         to: req.body.to,
-        time: req.body.time,
+        time: parseInt(req.body.time),
         price: parseInt(req.body.price),
         content: req.body.content,
     }
@@ -79,7 +79,7 @@ router.post('/appointment/change', urlencodedParser, async function (req, res, n
         uid: req.body.uid,
         from: req.body.from,
         to: req.body.to,
-        time: req.body.time,
+        time: parseInt(req.body.time),
         price: parseInt(req.body.price),
         content: req.body.content,
         timeOutOrNot: parseInt(req.body.timeOutOrNot),
