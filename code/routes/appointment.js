@@ -219,7 +219,7 @@ router.get('/appointment/remove', urlencodedParser, async function (req, res, ne
 	let params = req.query;
     console.log(params);
                                                                                                                                          
-    let collection = await informationDB.getCollection("RELAYLIST");
+    let collection = await informationDB.getCollection("APPOINTMENT");
     collection.remove({_id: ObjectID(params.id)},function () {
             res.status(200).json({ "code":"1" , "msg": "删除成功" });
         });
