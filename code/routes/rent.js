@@ -141,7 +141,7 @@ router.get('/rent/confirm', urlencodedParser, async function (req, res, next) {
     console.log(params);
                                                                                                                                          
     let collection = await informationDB.getCollection("RENTLIST");
-    collection.update({ _id: ObjectID(params.id)},{$set: {rentedOrNot: 0}});
+    collection.update({ _id: ObjectID(params.id)},{$set: {rentedOrNot: 1}});
     res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
 
 });

@@ -205,7 +205,7 @@ router.get('/appointment/confirm', urlencodedParser, async function (req, res, n
     console.log(params);
                                                                                                                                          
     let collection = await informationDB.getCollection("APPOINTMENT");
-    collection.update({ _id: ObjectID(params.id)},{$set: {successOrNot: 0}});
+    collection.update({ _id: ObjectID(params.id)},{$set: {successOrNot: 1}});
     res.status(200).json({ "code": "1" ,"msg" : "确认成功"})
 
 });
