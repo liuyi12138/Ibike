@@ -263,11 +263,10 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
                 if (uncompileStr(passwordData.password) == loginData.password) {
                     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
                         let now = getDate();
-                        console.log(now)
                         let nowtime = (10*parseInt(now.hour) + parseInt(now.minutes))/10;
-                        let nowdate = parseInt(10000*now.year + 100*now.month + now.day)
-                        console.log(nowtime);
-                        console.log(nowdate);
+                        let nowdate = parseInt(String(now.year) + String(now.month) + String(now.day))
+                        console.log(nowtime)
+                        console.log(nowdate)
                         aptCollection.update({time :{$lt:nowtime}},{$set: {timeOutOrNot: 1}});
                         rentCollection.update({ddl :{$lt:nowdate}},{$set: {timeOutOrNot: 1}});
                         res.status(200).json({ "code": "1" ,"msg" : "登录成功", "account": data})
