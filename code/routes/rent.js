@@ -180,6 +180,7 @@ router.get('/rent/find', urlencodedParser, async function (req, res, next) {
     console.log(condition);
     let collection = await informationDB.getCollection("RENTLIST");
     collection.find(condition).toArray(function (err, allData) {
+        console.log(allData)
         res.status(200).json({
             rent: allData
         });
