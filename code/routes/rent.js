@@ -54,6 +54,7 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
                 }
                 else {
                     rentCollection.insertOne({
+                        userinfo: accountData,
                         ownerUid: rent.ownerUid,
                         bike: bikeData,
                         battery: rent.battery,
@@ -113,6 +114,7 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
                 else {
                     rentCollection.save({
                         _id: ObjectID(rentData._id),
+                        userinfo: rentData.userinfo,
                         ownerUid: rent.ownerUid,
                         bike: rentData.bike,
                         battery: rent.battery,

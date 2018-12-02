@@ -75,6 +75,7 @@ router.get('/bike', urlencodedParser, async function (req, res, next) {
 	collection.findOne({ ownerUid: params.ownerUid }, function (err, data) {
 		if (data) {
 			res.status(200).json({
+                "code": "1",
                 bike: data
 			});
 		}
