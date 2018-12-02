@@ -33,7 +33,8 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
         type: req.body.type,
         timeInfo: req.body.timeInfo,
         price: parseInt(req.body.price),
-        region: req.body.region
+        region: req.body.region,
+        ddl: parseInt(req.body.ddl)
     }
 
     console.log(rent);
@@ -60,6 +61,7 @@ router.post('/rent/add', urlencodedParser, async function (req, res, next) {
                         timeInfo: rent.timeInfo,
                         price: rent.price,
                         region: rent.region,
+                        ddl: rent.ddl,
                         createTime: getDate(),
                         timeOutOrNot: 0,
                         rentedOrNot: 0,
@@ -90,6 +92,7 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
         timeOutOrNot: parseInt(req.body.timeOutOrNot),
         rentedOrNot: parseInt(req.body.rentedOrNot),
         id: req.body.id,
+        ddl: parseInt(req.body.ddl)
     }
 
     console.log(rent);
@@ -120,6 +123,7 @@ router.post('/rent/change', urlencodedParser, async function (req, res, next) {
                         createTime: rentData.createTime,
                         timeOutOrNot: rent.timeOutOrNot,
                         rentedOrNot: rent.rentedOrNot,
+                        ddl: rent.ddl
                     }, function () {
                         res.status(200).json({ "code": "1" ,"msg" : "修改成功"})
                     })
