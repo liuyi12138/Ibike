@@ -251,6 +251,7 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
     let accountCollection = await informationDB.getCollection("ACCOUNT");
     let passwordCollection = await informationDB.getCollection("PASSWORD");
     let aptCollection = await informationDB.getCollection("APPOINTMENT");
+    let rentCollection = await informationDB.getCollection("RENTLIST");
 
     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
         if (!data) {
@@ -263,7 +264,11 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
                     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
                         let now = getDate();
                         let nowtime = (10*parseInt(now.hour) + parseInt(now.minutes))/10;
-                        //aptCollection.update({time :{$lt:nowtime}},{$set: {timeOutOrNot: 1}});
+                        let nowdate = parseInt(now.year+now.month+now.day)
+                        console.log(nowtime);
+                        console.log(nowdate);
+                        aptCollection.update({time :{$lt:nowtime}},{$set: {timeOutOrNot: 1}});
+                        rentCollection.update({ddl :{$lt:nowdate}},{$set: {timeOutOrNot: 1}});
                         res.status(200).json({ "code": "1" ,"msg" : "登录成功", "account": data})
                     })
                 }
