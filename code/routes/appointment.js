@@ -210,6 +210,22 @@ router.get('/appointment/confirm', urlencodedParser, async function (req, res, n
 
 });
 
+/*
+ * @function 删除行程
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/appointment/remove', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("RELAYLIST");
+    collection.remove({_id: ObjectID(params.id)},function () {
+            res.status(200).json({ "code":"1" , "msg": "删除成功" });
+        });
+
+});
+
 
 function findRegion(myRegion) {
     let yun = [{latitude:30.5051511231,longitude:114.4374990463},{latitude:30.5181655062,longitude:114.4390869141},{latitude:30.5187015727,longitude:114.4275856018},{latitude:30.5064082702,longitude:114.4235515594}];

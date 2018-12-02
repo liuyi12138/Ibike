@@ -86,6 +86,22 @@ router.get('/relay/confirm', urlencodedParser, async function (req, res, next) {
 
 });
 
+/*
+ * @function 删除行程
+ * @param  id(string) id
+ * @return code 1
+ */
+router.get('/relay/remove', urlencodedParser, async function (req, res, next) {
+	let params = req.query;
+    console.log(params);
+                                                                                                                                         
+    let collection = await informationDB.getCollection("RELAYLIST");
+    collection.remove({_id: ObjectID(params.id)},function () {
+            res.status(200).json({ "code":"1" , "msg": "删除成功" });
+        });
+
+});
+
 
 /*
  * @function 修改现场接送信息
