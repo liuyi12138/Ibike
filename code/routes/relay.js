@@ -49,10 +49,10 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
                     res.status(200).json({ "code": "-2" ,"msg" : "车辆不存在"})
                 }
                 else {
-                    let fromRegion = findRegion(appointment.from);
-                    let toRegion = findRegion(appointment.to);
-                    appointment.from.region = fromRegion;
-                    appointment.to.region = toRegion;
+                    let fromRegion = findRegion(relay.from);
+                    let toRegion = findRegion(relay.to);
+                    relay.from.region = fromRegion;
+                    relay.to.region = toRegion;
 
                     relayCollection.insertOne({
                         ownerUid: relay.ownerUid,
