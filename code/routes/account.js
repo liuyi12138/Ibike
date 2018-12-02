@@ -250,6 +250,7 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
 
     let accountCollection = await informationDB.getCollection("ACCOUNT");
     let passwordCollection = await informationDB.getCollection("PASSWORD");
+    let aptCollection = await informationDB.getCollection("APPOINTMENT");
 
     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
         if (!data) {
@@ -260,6 +261,9 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
             passwordCollection.findOne({ uid: loginData.uid }, function (err, passwordData) {
                 if (uncompileStr(passwordData.password) == loginData.password) {
                     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
+                        let now = getDate();
+                        let nowtime = (10*parseInt(now.hour) + parseInt(now.minutes))/10;
+                        //aptCollection.update({time :{$lt:nowtime}},{$set: {timeOutOrNot: 1}});
                         res.status(200).json({ "code": "1" ,"msg" : "登录成功", "account": data})
                     })
                 }
@@ -292,5 +296,20 @@ function uncompileStr(code){
     // }        
     // return c;
 }  
+
+function getDate(){
+	nowDate = new Date();
+	var nowMonth = nowDate.getMonth()+1;
+	nowDateArray = {
+		year: nowDate.getFullYear(),
+		month: nowMonth>9?nowMonth:"0"+nowMonth,
+		day: nowDate.getDate()>9?nowDate.getDate() :"0"+nowDate.getDate(),
+		hour: nowDate.getHours()>9?nowDate.getHours() :"0"+nowDate.getHours(),
+		minutes: nowDate.getMinutes()>9?nowDate.getMinutes() :"0"+nowDate.getMinutes(),
+		second: nowDate.getSeconds()>9?nowDate.getSeconds() :"0"+nowDate.getSeconds()
+	}
+
+    return nowDateArray ;
+}
 
 module.exports = router;
