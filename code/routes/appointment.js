@@ -200,7 +200,7 @@ router.get('/appointment/findById', urlencodedParser, async function (req, res, 
  * @param  id(string) id
  * @return code 1
  */
-router.get('/sell/confirm', urlencodedParser, async function (req, res, next) {
+router.get('/appointment/confirm', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
     console.log(params);
                                                                                                                                          

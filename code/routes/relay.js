@@ -76,7 +76,7 @@ router.post('/relay/add', urlencodedParser, async function (req, res, next) {
  * @param  id(string) id
  * @return code 1
  */
-router.get('/sell/confirm', urlencodedParser, async function (req, res, next) {
+router.get('/relay/confirm', urlencodedParser, async function (req, res, next) {
 	let params = req.query;
     console.log(params);
                                                                                                                                          
