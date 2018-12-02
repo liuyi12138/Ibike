@@ -263,7 +263,7 @@ router.post('/account/login', urlencodedParser, async function (req, res, next) 
                 if (uncompileStr(passwordData.password) == loginData.password) {
                     accountCollection.findOne({ uid: loginData.uid }, function (err, data) {
                         let now = getDate();
-                        let nowtime = (10*parseInt(now.hour) + parseInt(now.minutes))/10;
+                        let nowtime = parseInt(String(now.hour) + String(now.minutes));
                         let nowdate = parseInt(String(now.year) + String(now.month) + String(now.day))
                         console.log(nowtime)
                         console.log(nowdate)
